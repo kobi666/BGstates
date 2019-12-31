@@ -10,6 +10,7 @@ public class StateManager : MonoBehaviour
     
     [SerializeField]
     public Dictionary<string, GameObject> statesDictionary;
+    public GameObject SelectedState;
 
     private void Awake() {
         _stateManager = this;

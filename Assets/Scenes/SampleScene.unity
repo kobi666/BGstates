@@ -4886,6 +4886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053210046}
+  - component: {fileID: 1053210047}
   m_Layer: 0
   m_Name: States
   m_TagString: States
@@ -4958,6 +4959,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1053210047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053210045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4670b70995bc14f46ab300fbc31f857b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HighlightColor: {r: 0.0047169924, g: 1, b: 0.12228547, a: 0}
+  SelectColor: {r: 1, g: 0, b: 0.8503313, a: 0}
+  DemocraticColor: {r: 0, g: 0.81989765, b: 1, a: 0}
+  RepublicanColor: {r: 1, g: 0, b: 0.10410547, a: 0}
 --- !u!1 &1131802176
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,6 +6138,8 @@ GameObject:
   - component: {fileID: 1406103531}
   - component: {fileID: 1406103532}
   - component: {fileID: 1406103533}
+  - component: {fileID: 1406103535}
+  - component: {fileID: 1406103534}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6169,6 +6188,32 @@ MonoBehaviour:
   TentativeSelectedState: {fileID: 0}
   CurrentPlayer: {fileID: 0}
   StatesPlaceholder: {fileID: 0}
+  AllStates: []
+--- !u!114 &1406103534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406103530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5736385e9d0366b49ad6f7702d214838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentPlayer: {fileID: 0}
+--- !u!114 &1406103535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406103530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e2665720c9e1646858e07faec98efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   AllStates: []
 --- !u!1 &1410566558
 GameObject:

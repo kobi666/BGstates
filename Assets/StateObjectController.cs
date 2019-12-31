@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class StateObjectController : MonoBehaviour
 {
+    string _name;
     SpriteRenderer spriteRenderer;
     Color HoverColor = Color.green;
     static Color OriginalColor;
     private void OnMouseEnter() {
         spriteRenderer.color = Color.green;
         GameManager._gameManager.TentativeStateSelected(this.gameObject);
-    }
-
-    class ColorAndPriority {
-        Color _color;
-        int _priority;
-        public ColorAndPriority(Color col, int pri) {
-            this._color = col;
-            this._priority = pri;
-        }
     }
 
     [SerializeField]
@@ -31,24 +23,19 @@ public class StateObjectController : MonoBehaviour
 
 
     
-    public class StateControllerClass {
-        private bool _playerCanMoveToThisState = false;
-        private bool _stateIsSelected = false;
-        public bool PlayerCanMoveToThisState { get => _playerCanMoveToThisState ; set { _playerCanMoveToThisState = value;}}
-        public bool StateIsSelected {get => _stateIsSelected ; set {_stateIsSelected = value;}}
-    }
+    
 
     public StateControllerClass stateControl;
 
-    void HighlightStateAccordingToStateDictionary(Dictionary<string, GameObject> dict) {
-        if (dict.ContainsKey(this.gameObject.name)) {
-            this.gameObject.GetComponent<SpriteRenderer>().color = HighlightedColor;
-        }
-    }
+    // void HighlightStateAccordingToStateDictionary(Dictionary<string, GameObject> dict) {
+    //     if (dict.ContainsKey(this.gameObject.name)) {
+    //         this.gameObject.GetComponent<SpriteRenderer>().color = AllStatesGeneralMetadata.AllStatesObj.HighlightColor;
+    //     }
+    // }
 
-    public void ColorManager() {
-        if (stateControl.StateIsSelected) {
-            spriteRenderer.color = SelectedColor;
+    public void StateSettingsManager(Dictionary<string, GameObject> dict) {
+        if (dict.ContainsKey(_name)) {
+            
         }
     }
 
@@ -66,6 +53,7 @@ public class StateObjectController : MonoBehaviour
     private void Awake() {
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();  
     OriginalColor = spriteRenderer.color;  
+    _name = this.gameObject.name;
     }
 
     
