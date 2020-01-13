@@ -13,10 +13,8 @@ public class StateMetaData : MonoBehaviour
                 list.RemoveAt(i);
             }
         }
-        
-       
-
     }
+
     void Start()
     {
         removeNullValuesFromTopOfList(BoarderingStates);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StateObjectController : MonoBehaviour
 {
@@ -9,11 +10,8 @@ public class StateObjectController : MonoBehaviour
     Color HoverColor = Color.green;
     static Color OriginalColor;
 
-
-    
-    Color CurrentColor;
-    private void OnMouseEnter() {
-        spriteRenderer.color = Color.green;
+    private void OnMouseEnter()
+    {
         GameManager._gameManager.TentativeStateSelected(this.gameObject);
     }
 
@@ -23,11 +21,6 @@ public class StateObjectController : MonoBehaviour
     ColorAndPriority SelectedColor = new ColorAndPriority(Color.black, 10);
     [SerializeField]
     ColorAndPriority BaseColor = new ColorAndPriority(OriginalColor, 1);
-
-
-
-    
-    
 
     public StateControllerClass stateControl;
 
@@ -43,12 +36,16 @@ public class StateObjectController : MonoBehaviour
         }
     }
 
-
-    private void OnMouseOver() {
-        
+    private void OnMouseOver()
+    {
         spriteRenderer.color = Color.green;
     }
-    
+
+    public void ChangeColorGreen()
+    {
+        spriteRenderer.color = Color.green;
+    }
+
     private void OnMouseExit() {
         spriteRenderer.color = OriginalColor;
         GameManager._gameManager.TentativeState_Deslected();
@@ -60,10 +57,6 @@ public class StateObjectController : MonoBehaviour
     _name = this.gameObject.name;
 
     }
-
-    
-
-    
 
     // Start is called before the first frame update
     void Start()
