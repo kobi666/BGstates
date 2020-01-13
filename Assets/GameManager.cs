@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> AllStates;
     public GameObject RandomState() {
         return AllStates[UnityEngine.Random.Range(0, AllStates.Count)];
-        
     }
 
     [SerializeField]

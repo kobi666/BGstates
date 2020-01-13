@@ -8,6 +8,10 @@ public class StateObjectController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Color HoverColor = Color.green;
     static Color OriginalColor;
+
+
+    
+    Color CurrentColor;
     private void OnMouseEnter() {
         spriteRenderer.color = Color.green;
         GameManager._gameManager.TentativeStateSelected(this.gameObject);
@@ -54,7 +58,10 @@ public class StateObjectController : MonoBehaviour
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();  
     OriginalColor = spriteRenderer.color;  
     _name = this.gameObject.name;
+
     }
+
+    
 
     
 

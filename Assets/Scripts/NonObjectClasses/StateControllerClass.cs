@@ -19,6 +19,10 @@ public class StateControllerClass : MonoBehaviour
         }
         public bool PlayerCanMoveToThisState { get => _playerCanMoveToThisState ; set { _playerCanMoveToThisState = value;}}
         //public bool StateIsSelected {get => _stateIsSelected ; set {_stateIsSelected = value;}}
+
+
+
+
         
     
 }
