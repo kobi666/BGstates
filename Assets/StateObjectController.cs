@@ -10,6 +10,9 @@ public class StateObjectController : MonoBehaviour
     Color HoverColor = Color.green;
     static Color OriginalColor;
 
+
+    
+
     private void OnMouseEnter()
     {
         GameManager._gameManager.TentativeStateSelected(this.gameObject);
