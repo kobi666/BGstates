@@ -124,27 +124,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // mostly testing conditions
-        // if (Input.GetKeyDown(KeyCode.I)) {
-        //     stateDictionary = FindNeighboringStatesAccordingToTravelPoints(AllStates[UnityEngine.Random.Range(0, AllStates.Count)], UnityEngine.Random.Range(1,6));
-        //     HighlightStates(stateDictionary);
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Keypad3)) {
-        //     int t = 0;
-        //     if (Input.GetKeyDown(KeyCode.Keypad1)) {
-        //         t = 1;
-        //     }
-        //     if (Input.GetKeyDown(KeyCode.Keypad2)){
-        //         t = 2;
-        //     }
-        //     if (Input.GetKeyDown(KeyCode.Keypad3)){
-        //         t = 3;
-        //     }
-        //     stateDictionary = FindNeighboringStatesAccordingToTravelPoints(AllStates[UnityEngine.Random.Range(0, AllStates.Count)], t);
-        //     HighlightStates(stateDictionary);
-        // }
         
     }
 }
