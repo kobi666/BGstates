@@ -62,7 +62,10 @@ public class StateObjectController : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (SM.PlayerCanMoveToThisState == true)
+        {
         spriteRenderer.color = Color.green;
+        }
     }
 
     public void ChangeColorGreen()
@@ -71,8 +74,8 @@ public class StateObjectController : MonoBehaviour
     }
 
     private void OnMouseExit() {
-        spriteRenderer.color = OriginalColor;
-        //GameManager._gameManager.TentativeState_Deslected();
+        
+        StateColorManager(spriteRenderer, SM);
     }
 
     private void Awake() {

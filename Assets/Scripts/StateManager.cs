@@ -5,6 +5,7 @@ using System;
 
 public class StateManager : MonoBehaviour
 {
+    
     public List<GameObject> AllStatesList;
     public Dictionary<string, GameObject> AllStatesDict = new Dictionary<string, GameObject>();
     GameObject AllStatesParentObject;
@@ -12,7 +13,7 @@ public class StateManager : MonoBehaviour
     public static StateManager _stateManager;
     
     [SerializeField]
-    public Dictionary<string, GameObject> statesDictionary;
+    public Dictionary<string, StateAndTravelCost> statesDictionary;
     public GameObject SelectedState;
 
     
@@ -31,17 +32,17 @@ public class StateManager : MonoBehaviour
     // }
 
 
-    public Dictionary<string, GameObject> FindNeighboringStatesAccordingToTravelPoints(GameObject state, int travelPoints) {
+    public Dictionary<string, StateAndTravelCost> FindNeighboringStatesAccordingToTravelPoints(GameObject state, int travelPoints) {
         List<GameObject>[] states = new List<GameObject>[travelPoints];
         Debug.Log("travel Points : " + travelPoints + " | Original state : " + state.name);
         Debug.Log("states array length: " + states.Length.ToString());
-        Dictionary<string, GameObject> stateDict = new Dictionary<string, GameObject>();
+        Dictionary<string, StateAndTravelCost> stateDict = new Dictionary<string, StateAndTravelCost>();
         if (state != null) {
         states[0] = ListBoarderingStates(state);
         foreach(GameObject sg in states[0]) {
             if (stateDict.ContainsKey(sg.name) == false) 
                             {
-                        stateDict.Add(sg.name, sg);
+                        stateDict.Add(sg.name, new StateAndTravelCost(sg, 1));
                             }
         }
         }
@@ -55,7 +56,7 @@ public class StateManager : MonoBehaviour
                             states[i].Add(sl);
                             if (stateDict.ContainsKey(sl.name) == false) 
                             {
-                                stateDict.Add(sl.name, sl);
+                                stateDict.Add(sl.name, new StateAndTravelCost(sl, i+1));
                             }
                         
                         }
@@ -73,9 +74,9 @@ public class StateManager : MonoBehaviour
     }
 
 
-    public void SetStatesAsMovableForPlayer(Dictionary<string, GameObject> dict) {
-        foreach(KeyValuePair<string, GameObject> _state in dict) {
-            _state.Value.GetComponent<StateObjectController>().SM.PlayerCanMoveToThisState = true;
+    public void SetStatesAsMovableForPlayer(Dictionary<string, StateAndTravelCost> dict) {
+        foreach(KeyValuePair<string, StateAndTravelCost> St_Tc in dict) {
+            St_Tc.Value.GO.GetComponent<StateObjectController>().SM.PlayerCanMoveToThisState = true;
         }
     }
 
