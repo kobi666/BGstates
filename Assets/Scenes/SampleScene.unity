@@ -2311,7 +2311,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StatePropertyChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 102900000, guid: 21a509e1d3cd49978623fa564adb6f02, type: 3}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &508595682
 GameObject:
   m_ObjectHideFlags: 0
@@ -5452,10 +5463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4670b70995bc14f46ab300fbc31f857b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HighlightColor: {r: 0.0047169924, g: 1, b: 0.12228547, a: 0}
-  SelectColor: {r: 1, g: 0, b: 0.8503313, a: 0}
-  DemocraticColor: {r: 0, g: 0.81989765, b: 1, a: 0}
-  RepublicanColor: {r: 1, g: 0, b: 0.10410547, a: 0}
+  HighlightColor: {r: 0.9062743, g: 1, b: 0, a: 1}
+  SelectColor: {r: 1, g: 0, b: 0.8503313, a: 1}
+  DemocraticColor: {r: 0, g: 0.81989765, b: 1, a: 1}
+  RepublicanColor: {r: 1, g: 0, b: 0.10410547, a: 1}
 --- !u!1 &1131802176
 GameObject:
   m_ObjectHideFlags: 0

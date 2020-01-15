@@ -79,7 +79,7 @@ public class StateObjectController : MonoBehaviour
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();  
     OriginalColor = spriteRenderer.color;  
     _name = this.gameObject.name;
-    SM = gameObject.GetComponent<State>();
+    SM = this.gameObject.GetComponent<State>();
     }
 
     // Start is called before the first frame update

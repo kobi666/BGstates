@@ -47,7 +47,8 @@ public class State : MonoBehaviour
 
         private void Awake() {
             _action = gameObject.GetComponent<StateObjectController>().ExecuteOnStatePropertyChange;
-        }    
+            StatePropertyChanged.AddListener(_action);
+        }
     }
 
 

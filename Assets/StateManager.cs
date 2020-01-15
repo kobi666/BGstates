@@ -82,7 +82,7 @@ public class StateManager : MonoBehaviour
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Keypad3)) {
-            statesDictionary = FindNeighboringStatesAccordingToTravelPoints(AllStatesList[UnityEngine.Random.Range(0, AllStatesList.Count)], 3);
+            statesDictionary = FindNeighboringStatesAccordingToTravelPoints(AllStatesList[UnityEngine.Random.Range(0, AllStatesList.Count -1)], 3);
             SetStatesAsMovableForPlayer(statesDictionary);
         }
     }
@@ -94,7 +94,8 @@ public class StateManager : MonoBehaviour
     private void Awake() {
         _stateManager = this;
         GameObject AllStatesParentObject = GameObject.FindGameObjectWithTag("States");
-        for (int i = 0 ; i <= AllStatesParentObject.transform.childCount ; i++ ) {
+        for (int i = 0 ; i <= AllStatesParentObject.transform.childCount -1 ; i++ ) {
+            AllStatesList.Add(AllStatesParentObject.transform.GetChild(i).gameObject);
             AllStatesDict.Add(AllStatesParentObject.transform.GetChild(i).name, AllStatesParentObject.transform.GetChild(i).gameObject);
         }
     }
