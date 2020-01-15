@@ -11,19 +11,40 @@ public class StateObjectController : MonoBehaviour
     static Color OriginalColor;
 
 
+    public State SM;
+
+    
+
+
+
+
+    public void StateColorManager(SpriteRenderer SR, State _state) {
+        if (_state.PlayerCanMoveToThisState == true) {
+            SR.color = AllStatesGeneralMetadata.AllStatesObj.HighlightColor;
+        }
+        else if (_state.StateIsSelected == true) {
+            SR.color = AllStatesGeneralMetadata.AllStatesObj.SelectColor;
+        }
+        else if (_state.StateIsSelected == true && _state.PlayerCanMoveToThisState == true) {
+            SR.color = AllStatesGeneralMetadata.AllStatesObj.SelectColor;
+        }
+    }
+
+
+    ///Theoratically, add functions here to execute on state change
+    public void ExecuteOnStatePropertyChange() {
+        StateColorManager(spriteRenderer, SM);
+    }
+
+
     
 
     private void OnMouseEnter()
     {
-        GameManager._gameManager.TentativeStateSelected(this.gameObject);
+        //GameManager._gameManager.TentativeStateSelected(this.gameObject);
     }
 
-    [SerializeField]
-    ColorAndPriority HighlightedColor = new ColorAndPriority(Color.yellow, 2);
-    [SerializeField]
-    ColorAndPriority SelectedColor = new ColorAndPriority(Color.black, 10);
-    [SerializeField]
-    ColorAndPriority BaseColor = new ColorAndPriority(OriginalColor, 1);
+    
 
     public StateControllerClass stateControl;
 
@@ -51,14 +72,14 @@ public class StateObjectController : MonoBehaviour
 
     private void OnMouseExit() {
         spriteRenderer.color = OriginalColor;
-        GameManager._gameManager.TentativeState_Deslected();
+        //GameManager._gameManager.TentativeState_Deslected();
     }
 
     private void Awake() {
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();  
     OriginalColor = spriteRenderer.color;  
     _name = this.gameObject.name;
-
+    SM = gameObject.GetComponent<State>();
     }
 
     // Start is called before the first frame update

@@ -5,16 +5,17 @@ using System;
 
 public class StateManager : MonoBehaviour
 {
-    public List<GameObject> AllStates;
+    public List<GameObject> AllStatesList;
+    public Dictionary<string, GameObject> AllStatesDict = new Dictionary<string, GameObject>();
+    GameObject AllStatesParentObject;
+
     public static StateManager _stateManager;
     
     [SerializeField]
     public Dictionary<string, GameObject> statesDictionary;
     public GameObject SelectedState;
 
-    private void Awake() {
-        _stateManager = this;
-    }
+    
 
     public List<GameObject> ListBoarderingStates(GameObject state) {
         List<GameObject> states = state.GetComponent<StateMetaData>().BoarderingStates;
@@ -22,12 +23,12 @@ public class StateManager : MonoBehaviour
         return states;
     }
 
-    public event Action<Dictionary<string, GameObject>> onStateMovementCalculation;
-    public void StateMovementCalculate(Dictionary<string, GameObject> SD) {
-        if (onStateMovementCalculation != null) {
-            onStateMovementCalculation(SD);
-        }
-    }
+    // public event Action<Dictionary<string, GameObject>> onStateMovementCalculation;
+    // public void StateMovementCalculate(Dictionary<string, GameObject> SD) {
+    //     if (onStateMovementCalculation != null) {
+    //         onStateMovementCalculation(SD);
+    //     }
+    // }
 
 
     public Dictionary<string, GameObject> FindNeighboringStatesAccordingToTravelPoints(GameObject state, int travelPoints) {
@@ -71,14 +72,30 @@ public class StateManager : MonoBehaviour
         return stateDict;
     }
 
-    void Start()
-    {
-        
+
+    public void SetStatesAsMovableForPlayer(Dictionary<string, GameObject> dict) {
+        foreach(KeyValuePair<string, GameObject> _state in dict) {
+            _state.Value.GetComponent<StateObjectController>().SM.PlayerCanMoveToThisState = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Keypad3)) {
+            statesDictionary = FindNeighboringStatesAccordingToTravelPoints(AllStatesList[UnityEngine.Random.Range(0, AllStatesList.Count)], 3);
+            SetStatesAsMovableForPlayer(statesDictionary);
+        }
+    }
+
+
+
+
+
+    private void Awake() {
+        _stateManager = this;
+        GameObject AllStatesParentObject = GameObject.FindGameObjectWithTag("States");
+        for (int i = 0 ; i <= AllStatesParentObject.transform.childCount ; i++ ) {
+            AllStatesDict.Add(AllStatesParentObject.transform.GetChild(i).name, AllStatesParentObject.transform.GetChild(i).gameObject);
+        }
     }
 }
