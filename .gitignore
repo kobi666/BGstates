@@ -9,8 +9,12 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+<<<<<<< HEAD
+/[Tt]est/
+=======
 /Test
 [Aa]ssets/Test
+>>>>>>> 5bd0e577c0d34bd6b56e2914fb9cb864a5ed8e86
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

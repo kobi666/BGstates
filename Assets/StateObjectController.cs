@@ -10,6 +10,9 @@ public class StateObjectController : MonoBehaviour
     Color HoverColor = Color.green;
     static Color OriginalColor;
 
+
+    
+
     private void OnMouseEnter()
     {
         GameManager._gameManager.TentativeStateSelected(this.gameObject);
@@ -55,6 +58,7 @@ public class StateObjectController : MonoBehaviour
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();  
     OriginalColor = spriteRenderer.color;  
     _name = this.gameObject.name;
+
     }
 
     // Start is called before the first frame update
