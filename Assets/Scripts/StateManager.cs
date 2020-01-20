@@ -94,7 +94,7 @@ public class StateManager : MonoBehaviour
 
     private void Awake() {
         _stateManager = this;
-        GameObject AllStatesParentObject = GameObject.FindGameObjectWithTag("States");
+        AllStatesParentObject = GameObject.FindGameObjectWithTag("States");
         for (int i = 0 ; i <= AllStatesParentObject.transform.childCount -1 ; i++ ) {
             AllStatesList.Add(AllStatesParentObject.transform.GetChild(i).gameObject);
             AllStatesDict.Add(AllStatesParentObject.transform.GetChild(i).name, AllStatesParentObject.transform.GetChild(i).gameObject);

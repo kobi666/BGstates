@@ -9,8 +9,9 @@ public class DiceRoller : MonoBehaviour
 
 #if UNITY_EDITOR
 
+    public int Dice;
     public bool debug;
-
+    int formerDiceRoll = 0;
     private Text _txt;
 
     private void Awake()
@@ -47,7 +48,7 @@ public class DiceRoller : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
-                RollDice();
+                Dice = RollDice();
             }
         }
     }
@@ -60,16 +61,24 @@ public class DiceRoller : MonoBehaviour
     public int RollDice()
     {
 #if UNITY_EDITOR
-        var r = Random.Range(1, 6);
+        
+        var r = Random.Range(1, 7);
+        if (r == formerDiceRoll) {
+            int rr = Random.Range(1,3);
+            if(rr == 2) {
+                r = Random.Range(1, 7);
+            }
+        }
+        
+
 
         if (debug)
+        
         {
             _txt.text = r.ToString();
         }
-
+        
         return r;
 #endif
-
-        return Random.Range(1, 6);
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - States
+  - Players
   layers:
   - Default
   - TransparentFX
