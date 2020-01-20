@@ -9,6 +9,7 @@ public class DiceRoller : MonoBehaviour
 
 #if UNITY_EDITOR
 
+    public DiceRoller _dice;
     public int Dice;
     public bool debug;
     int formerDiceRoll = 0;
@@ -16,6 +17,7 @@ public class DiceRoller : MonoBehaviour
 
     private void Awake()
     {
+        _dice = this;
         var go = new GameObject("DEBUG CANVAS");
         var c = go.AddComponent<Canvas>();
         c.renderMode = RenderMode.ScreenSpaceOverlay;
