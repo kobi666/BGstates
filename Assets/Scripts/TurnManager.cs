@@ -7,7 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public GameObject CurrentPlayer = null;
+    public KeyValuePair<int, GameObject> CurrentPlayer;
     public int NumberOfPlayers = 0;
     public int turnCounter = 0;
     public int roundCounter = 0;
@@ -19,9 +19,18 @@ public class TurnManager : MonoBehaviour
         roundCounter++;
     }
 
-    GameObject AllPlayerParentObject;
-    GameObject GM;
-    
+    public void StartNextTurn() {
+
+    }
+
+    public event Action _turnEnded;
+    public void TurnEnded() {
+        if (_turnEnded != null) {
+            _turnEnded();
+        }
+    }
+
+    GameObject AllPlayerParentObject;    
     public Dictionary<int, GameObject> Players = new Dictionary<int, GameObject>();
 
     public void InitPlayersDictionary() {
@@ -36,6 +45,7 @@ public class TurnManager : MonoBehaviour
         GameManager._gameManager._gameStarted += TurnStarted;
         GameManager._gameManager._gameStarted += InitPlayersDictionary;
         GameManager._gameManager._gameStarted += incrementRoundByOne;
+        CurrentPlayer = new KeyValuePair<int, GameObject>(1, Players[1].gameObject);
     }
 
 
@@ -45,7 +55,6 @@ public class TurnManager : MonoBehaviour
     {
         _turnManager = this;
         onTurnStarted += incrementTurnCounterByOne;
-        
     }
 
     public event Action onTurnStarted;
