@@ -6,6 +6,8 @@ TagManager:
   tags:
   - States
   - Players
+  - Dice
+  - TestButtons
   layers:
   - Default
   - TransparentFX
