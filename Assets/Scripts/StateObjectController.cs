@@ -7,11 +7,21 @@ public class StateObjectController : MonoBehaviour
 {
     string _name;
     SpriteRenderer spriteRenderer;
-    Color HoverColor = Color.green;
     static Color OriginalColor;
 
 
     public State SM;
+
+    public void PreSelectState(State _sm){
+        if (_sm.StateCanBePreSelected) {
+
+        }
+    }
+
+
+    private void OnMouseDown() {
+        
+    }
 
     
     
@@ -25,12 +35,13 @@ public class StateObjectController : MonoBehaviour
         if (_state.PlayerCanMoveToThisState == true) {
             SR.color = AllStatesGeneralMetadata.AllStatesObj.HighlightColor;
         }
-        else if (_state.StateIsSelected == true) {
-            SR.color = AllStatesGeneralMetadata.AllStatesObj.SelectColor;
+        else if (_state.StatePreSelected == true) {
+            SR.color = AllStatesGeneralMetadata.AllStatesObj.PreSelectColor;
         }
-        else if (_state.StateIsSelected == true && _state.PlayerCanMoveToThisState == true) {
-            SR.color = AllStatesGeneralMetadata.AllStatesObj.SelectColor;
+        else if (_state.StatePreSelected == true && _state.PlayerCanMoveToThisState == true) {
+            SR.color = AllStatesGeneralMetadata.AllStatesObj.PreSelectColor;
         }
+        
     }
 
 
@@ -76,7 +87,7 @@ public class StateObjectController : MonoBehaviour
         spriteRenderer.color = Color.green;
     }
 
-    private void OnMouseExit() {
+    private void OnMouseExit() { 
         
         StateColorManager(spriteRenderer, SM);
     }

@@ -6,7 +6,7 @@ public class StateControllerClass : MonoBehaviour
 {
     // Start is called before the first frame update
         private bool _playerCanMoveToThisState = false;
-        public bool StateIsSelected() {
+        public bool StatePreSelected() {
             if (StateManager._stateManager.SelectedState != null) {
                 if (StateManager._stateManager.SelectedState.name == this.gameObject.name) {
                     return true;
@@ -18,7 +18,7 @@ public class StateControllerClass : MonoBehaviour
             else { return false;}
         }
         public bool PlayerCanMoveToThisState { get => _playerCanMoveToThisState ; set { _playerCanMoveToThisState = value;}}
-        //public bool StateIsSelected {get => _stateIsSelected ; set {_stateIsSelected = value;}}
+        //public bool StatePreSelected {get => _statePreSelected ; set {_statePreSelected = value;}}
 
 
 

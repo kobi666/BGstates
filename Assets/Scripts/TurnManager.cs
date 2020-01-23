@@ -7,7 +7,7 @@ public class TurnManager : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public KeyValuePair<int, GameObject> CurrentPlayer;
+    public GameObject CurrentPlayer;
     public int NumberOfPlayers = 0;
     public int turnCounter = 0;
     public int roundCounter = 0;
@@ -36,16 +36,23 @@ public class TurnManager : MonoBehaviour
     public void InitPlayersDictionary() {
         AllPlayerParentObject = GameObject.FindGameObjectWithTag("Players");
         for (int i = 0 ; i < AllPlayerParentObject.transform.childCount ; i++) {
-            Players.Add(i+1, AllPlayerParentObject.transform.GetChild(i).gameObject);
+            Players.Add(AllPlayerParentObject.transform.GetChild(i).gameObject.GetComponent<PlayerData>().sequenceNumber, AllPlayerParentObject.transform.GetChild(i).gameObject);
         }
         NumberOfPlayers = AllPlayerParentObject.transform.childCount;
     }
+
+    void SetPlayerAccordingToSequence(int SequenceNumber) {
+        CurrentPlayer = Players[SequenceNumber];
+    }
+
+    void SetFirstPlayer() {
+        CurrentPlayer = Players[1];
+    }
     
     private void Start() {
-        GameManager._gameManager._gameStarted += TurnStarted;
+        
         GameManager._gameManager._gameStarted += InitPlayersDictionary;
-        GameManager._gameManager._gameStarted += incrementRoundByOne;
-        CurrentPlayer = new KeyValuePair<int, GameObject>(1, Players[1].gameObject);
+        GameManager._gameManager._gameStarted += SetFirstPlayer;
     }
 
 

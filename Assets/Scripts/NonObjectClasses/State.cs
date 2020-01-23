@@ -12,9 +12,18 @@ public class State : MonoBehaviour
     public UnityEvent StatePropertyChanged;
     // Start is called before the first frame update
     private bool _playerCanMoveToThisState;
-    private bool _stateIsSelected;
+    private bool _statePreSelected;
     private UnityAction _action;
-    [SerializeField]
+    private bool _stateCanBePreSelected;
+
+    public bool StateCanBePreSelected { get => _stateCanBePreSelected ; set {
+        _stateCanBePreSelected = value;
+        if (StatePropertyChanged != null) {
+            StatePropertyChanged.Invoke();
+        }
+        
+        }
+    }
     public bool PlayerCanMoveToThisState { get => _playerCanMoveToThisState ; set 
         {
             _playerCanMoveToThisState = value;
@@ -24,10 +33,9 @@ public class State : MonoBehaviour
             if (StatePropertyChanged == null) { Debug.Log("Invoked empty method from Unity event");}
         }
     }
-    [SerializeField]
-    public bool StateIsSelected {get => _stateIsSelected ; set 
+    public bool StatePreSelected {get => _statePreSelected ; set 
         {
-            _stateIsSelected = value;
+            _statePreSelected = value;
             if (StatePropertyChanged != null) {
                 StatePropertyChanged.Invoke();
             }
