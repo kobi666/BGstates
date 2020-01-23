@@ -12,11 +12,17 @@ public class StateObjectController : MonoBehaviour
 
     public State SM;
 
+    public void StatePropertyManager () {
+        
+    }
+
     public void PreSelectState(State _sm){
         if (_sm.StateCanBePreSelected) {
-
+            SM.StatePreSelected = true;
         }
     }
+
+    
 
 
     private void OnMouseDown() {
